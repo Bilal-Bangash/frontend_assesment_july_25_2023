@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Container, Row, Col, Image, Carousel } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { Product } from '../../components'
+import { Product, ProductList } from '../../components'
 import { listProducts } from '../../redux/actions/productAction'
 import { DispatchType, RootState } from '../../redux/store'
 import styles from './HomeScreen.module.scss'
@@ -54,17 +54,19 @@ const HomePage = () => {
         <div>{error}</div>
       ) : (
         <Carousel indicators>
-          {productGroups.slice(0, 3).map((group, index) => (
-            <Carousel.Item key={index}>
-              <Row>
-                {group.map((product) => (
-                  <Col key={product.id}>
-                    <Product product={product} width={200} height={500} />
-                  </Col>
-                ))}
-              </Row>
-            </Carousel.Item>
-          ))}
+          {productGroups
+            .slice(0, window.innerWidth <= 768 ? productGroups?.length : 3)
+            .map((group, index) => (
+              <Carousel.Item key={index}>
+                <Row>
+                  {group.map((product) => (
+                    <Col key={product.id} xs={12} md={6}>
+                      <Product product={product} width={200} height={500} />
+                    </Col>
+                  ))}
+                </Row>
+              </Carousel.Item>
+            ))}
         </Carousel>
       )}
 
