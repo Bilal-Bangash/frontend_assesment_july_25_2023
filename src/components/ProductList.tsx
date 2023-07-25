@@ -1,10 +1,23 @@
+import React, { FC, memo } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Loader from './Loader'
 import Message from './Message'
 import Product from './Product'
-import { memo } from 'react'
+import { Product as ProductType } from '../redux/reducers/productReducers'
 
-const ProductList = ({ heading, loading, error, products }) => {
+interface ProductListProps {
+  heading: string
+  loading: boolean
+  error?: any
+  products: ProductType[]
+}
+
+const ProductList: FC<ProductListProps> = ({
+  heading,
+  loading,
+  error,
+  products,
+}) => {
   return (
     <>
       <h1>{heading}</h1>

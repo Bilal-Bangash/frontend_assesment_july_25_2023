@@ -1,9 +1,14 @@
-import React, { memo } from 'react'
+import React, { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
-import { Rating } from '.'
+import { Product as ProductType } from '../redux/reducers/productReducers'
+import Rating from './Rating'
 
-const Product = ({ product }) => {
+interface ProductProps {
+  product: ProductType
+}
+
+const Product: FC<ProductProps> = ({ product }) => {
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${product.id}`}>

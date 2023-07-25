@@ -1,7 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const Star = ({ value, color, threshold, halfThreshold }) => (
+type StarProps = {
+  value: number
+  color: string
+  threshold: number
+  halfThreshold: number
+}
+
+const Star: React.FC<StarProps> = ({
+  value,
+  color,
+  threshold,
+  halfThreshold,
+}) => (
   <span>
     <i
       style={{ color }}
@@ -16,14 +27,13 @@ const Star = ({ value, color, threshold, halfThreshold }) => (
   </span>
 )
 
-Star.propTypes = {
-  value: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired,
-  threshold: PropTypes.number.isRequired,
-  halfThreshold: PropTypes.number.isRequired,
+type RatingProps = {
+  value: number
+  text: string
+  color?: string
 }
 
-const Rating = ({ value, text, color }) => {
+const Rating: React.FC<RatingProps> = ({ value, text, color = '#f8e825' }) => {
   return (
     <div className="rating">
       {[1, 2, 3, 4, 5].map((threshold) => (
@@ -38,16 +48,6 @@ const Rating = ({ value, text, color }) => {
       <span>{text}</span>
     </div>
   )
-}
-
-Rating.defaultProps = {
-  color: '#f8e825',
-}
-
-Rating.propTypes = {
-  value: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  color: PropTypes.string,
 }
 
 export default Rating
