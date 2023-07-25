@@ -1,6 +1,9 @@
-import axios from 'axios'
 import { Dispatch } from 'redux'
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants'
+import {
+  CART_ADD_ITEM,
+  CART_CHECKOUT_ITEMS,
+  CART_REMOVE_ITEM,
+} from '../constants/cartConstants'
 import { AppActions, RootState } from '../store'
 import api from '../../utils/api'
 import { Product } from '../reducers/productReducers'
@@ -35,4 +38,14 @@ export const removeFromCart =
     })
 
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+  }
+
+export const checkoutCart =
+  () => (dispatch: Dispatch<AppActions>, getState: () => RootState) => {
+    dispatch({
+      type: CART_CHECKOUT_ITEMS,
+      payload: undefined,
+    })
+
+    localStorage.setItem('cartItems', JSON.stringify([]))
   }

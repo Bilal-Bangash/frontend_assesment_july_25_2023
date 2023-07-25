@@ -20,7 +20,7 @@ const ProductList: FC<ProductListProps> = ({
 }) => {
   return (
     <>
-      <h1>{heading}</h1>
+      <h1 className="my-4">{heading}</h1>
       {loading ? (
         <Loader />
       ) : error ? (

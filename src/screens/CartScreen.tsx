@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Message from '../components/Message'
 import { DispatchType, RootState } from '../redux/store'
-import { addToCart, removeFromCart } from '../redux/actions/cartActions'
+import {
+  addToCart,
+  removeFromCart,
+  checkoutCart,
+} from '../redux/actions/cartActions'
 
 const CartScreen: React.FC<{}> = () => {
   const { id } = useParams()
@@ -28,7 +32,7 @@ const CartScreen: React.FC<{}> = () => {
   }
 
   const checkOutHandler = () => {
-    navigate('/login?redirect=shipping')
+    dispatch(checkoutCart())
   }
 
   return (
