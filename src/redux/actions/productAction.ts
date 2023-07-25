@@ -7,13 +7,13 @@ import {
   PRODUCT_LIST_SUCCESS,
 } from '../constants/productConstants'
 import api from '../../utils/api'
-import { ThunkAction, ThunkDispatch } from 'redux-thunk'
-import { RootState } from '../store'
+import { ThunkAction } from 'redux-thunk'
+import { DispatchType, RootState } from '../store'
 import { AppActions } from '../reducers/productReducers'
 
 export const listProducts =
   (): ThunkAction<void, RootState, unknown, AppActions> =>
-  async (dispatch: ThunkDispatch<RootState, unknown, AppActions>) => {
+  async (dispatch: DispatchType) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST })
       const { data } = await api.get('/products')
@@ -33,8 +33,7 @@ export const listProducts =
   }
 
 export const detailProducts =
-  (id: number) =>
-  async (dispatch: ThunkDispatch<RootState, unknown, AppActions>) => {
+  (id: number) => async (dispatch: DispatchType) => {
     try {
       dispatch({ type: PRODUCT_DETAILS_REQUEST })
       const { data } = await api.get(`/products/${id}`)
