@@ -6,11 +6,10 @@ import {
   HomeScreen,
   AllProductsScreen,
   CartScreen,
-  ProductScreen,
+  ProductDetailScreen,
 } from './screens'
 
 const App = () => {
-  console.log('%csfsfsfs', 'color:red;font-size:50px')
   return (
     <Router>
       <Header />
@@ -19,7 +18,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/all-products" element={<AllProductsScreen />} />
-            <Route path="/product/:id" element={<ProductScreen />} />
+            <Route path="/product/:id" element={<ProductDetailScreen />} />
             <Route path="/cart/:id?" element={<CartScreen />} />
           </Routes>
         </Container>
