@@ -1,7 +1,5 @@
-import React from 'react'
-
 const ProductScreen = () => {
-  return <>Product Screen</>
+  return <>ProductScreen</>
 }
 
 export default ProductScreen
