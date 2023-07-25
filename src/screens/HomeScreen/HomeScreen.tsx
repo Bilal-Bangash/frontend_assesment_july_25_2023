@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import styles from './HomeScreen.module.scss'
 import { ProductList } from '../../components'
 import { listProducts } from '../../redux/actions/productAction'
+import { DispatchType, RootState } from '../../redux/store'
+import styles from './HomeScreen.module.scss'
 
 const HomePage = () => {
-  const dispatch = useDispatch()
-  const productList = useSelector((state) => state.productList)
+  const dispatch: DispatchType = useDispatch<DispatchType>()
+
+  const productList = useSelector((state: RootState) => state.productList)
+
   const { loading, error, products } = productList
 
   useEffect(() => {
