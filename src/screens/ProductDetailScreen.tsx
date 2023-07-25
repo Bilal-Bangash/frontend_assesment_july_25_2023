@@ -89,7 +89,7 @@ const ProductDetailScreen = () => {
                               setQuantity(parseInt(e.target.value))
                             }
                           >
-                            {[1, 2, 3, 4, 5].map((x) => (
+                            {[0, 1, 2, 3, 4].map((x) => (
                               <option key={x + 1} value={x + 1}>
                                 {x + 1}
                               </option>

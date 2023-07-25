@@ -36,7 +36,7 @@ type RatingProps = {
 const Rating: React.FC<RatingProps> = ({ value, text, color = '#f8e825' }) => {
   return (
     <div className="rating">
-      {[1, 2, 3, 4, 5].map((threshold) => (
+      {[0, 1, 2, 3, 4].map((threshold) => (
         <Star
           key={threshold}
           value={value}

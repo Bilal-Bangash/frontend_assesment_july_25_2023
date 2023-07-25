@@ -6,13 +6,20 @@ import Rating from './Rating'
 
 interface ProductProps {
   product: ProductType
+  width?: number
+  height?: number
 }
 
-const Product: FC<ProductProps> = ({ product }) => {
+const Product: FC<ProductProps> = ({ product, width, height }) => {
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${product.id}`}>
-        <Card.Img src={product.image} variant="top" />
+        <Card.Img
+          width={width}
+          height={height}
+          src={product.image}
+          variant="top"
+        />
       </Link>
       <Card.Body>
         <Link to={`/product/${product.id}`}>
