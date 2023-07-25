@@ -37,7 +37,7 @@ const HomePage = () => {
         heading="Recommended Products"
         loading={loading}
         error={error}
-        products={products.slice(0, 8)}
+        products={products?.slice(0, 8)}
       />
     </Container>
   )
