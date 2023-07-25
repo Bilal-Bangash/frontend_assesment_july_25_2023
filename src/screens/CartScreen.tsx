@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
@@ -9,16 +9,19 @@ import {
   removeFromCart,
   checkoutCart,
 } from '../redux/actions/cartActions'
+import SuccessModal from '../components/SuccessModal'
 
 const CartScreen: React.FC<{}> = () => {
   const { id } = useParams()
   const location = useLocation()
-  const qty = location.search ? Number(location.search.split('=')[1]) : 1
-
   const navigate = useNavigate()
   const dispatch: DispatchType = useDispatch<DispatchType>()
-
   const cart = useSelector((state: RootState) => state.cart)
+
+  const [showModal, setShowModal] = React.useState(false)
+
+  const qty = location.search ? Number(location.search.split('=')[1]) : 1
+
   const { cartItems } = cart
 
   useEffect(() => {
@@ -33,10 +36,17 @@ const CartScreen: React.FC<{}> = () => {
 
   const checkOutHandler = () => {
     dispatch(checkoutCart())
+    setShowModal(true)
   }
+
+  const handleClose = useCallback(() => {
+    setShowModal(false)
+    navigate('/')
+  }, [])
 
   return (
     <Row>
+      <SuccessModal show={showModal} handleClose={handleClose} />
       <Col md={8}>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Container, Row, Col, Image, Carousel } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { Product, ProductList } from '../../components'
+import { Product } from '../../components'
 import { listProducts } from '../../redux/actions/productAction'
 import { DispatchType, RootState } from '../../redux/store'
 import styles from './HomeScreen.module.scss'
